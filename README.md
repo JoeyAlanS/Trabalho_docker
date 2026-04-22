@@ -1,5 +1,7 @@
 # Testes de Carga com WordPress, Nginx e Locust
-
+## EQUIPE G
+Hector Zendejas Rebouças - 2315024
+Joey Alan de Freitas Solis - 2320416
 ## Descrição
 
 Este projeto tem como objetivo avaliar o desempenho de uma aplicação WordPress utilizando múltiplas instâncias e balanceamento de carga. Para isso, foram realizados testes de carga com a ferramenta Locust, simulando diferentes níveis de acesso simultâneo de usuários.
