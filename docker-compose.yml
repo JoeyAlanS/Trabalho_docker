@@ -3,83 +3,89 @@ services:
   mysql:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: wordpress
-      MYSQL_USER: wpuser
-      MYSQL_PASSWORD: wppass
-    networks:
-      - backend
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-prootpass"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    volumes:
+      - mysql_data:/var/lib/mysql
 
   wordpress1:
     image: wordpress:5.4.2-php7.2-apache
     environment:
-      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DB_USER: wpuser
-      WORDPRESS_DB_PASSWORD: wppass
-    volumes:
-      - wp_data:/var/www/html
-    networks:
-      - backend
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_AUTH_KEY: 'chave-auth-fixa-1234'
+      WORDPRESS_SECURE_AUTH_KEY: 'chave-secure-fixa-1234'
+      WORDPRESS_LOGGED_IN_KEY: 'chave-logged-fixa-1234'
+      WORDPRESS_NONCE_KEY: 'chave-nonce-fixa-1234'
+      WORDPRESS_AUTH_SALT: 'salt-auth-fixa-1234'
+      WORDPRESS_SECURE_AUTH_SALT: 'salt-secure-fixa-1234'
+      WORDPRESS_LOGGED_IN_SALT: 'salt-logged-fixa-1234'
+      WORDPRESS_NONCE_SALT: 'salt-nonce-fixa-1234'
     depends_on:
-      mysql:
-        condition: service_healthy
-    restart: on-failure
+      - mysql
 
   wordpress2:
     image: wordpress:5.4.2-php7.2-apache
     environment:
-      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DB_USER: wpuser
-      WORDPRESS_DB_PASSWORD: wppass
-    volumes:
-      - wp_data:/var/www/html
-    networks:
-      - backend
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_AUTH_KEY: 'chave-auth-fixa-1234'
+      WORDPRESS_SECURE_AUTH_KEY: 'chave-secure-fixa-1234'
+      WORDPRESS_LOGGED_IN_KEY: 'chave-logged-fixa-1234'
+      WORDPRESS_NONCE_KEY: 'chave-nonce-fixa-1234'
+      WORDPRESS_AUTH_SALT: 'salt-auth-fixa-1234'
+      WORDPRESS_SECURE_AUTH_SALT: 'salt-secure-fixa-1234'
+      WORDPRESS_LOGGED_IN_SALT: 'salt-logged-fixa-1234'
+      WORDPRESS_NONCE_SALT: 'salt-nonce-fixa-1234'
     depends_on:
-      mysql:
-        condition: service_healthy
-    restart: on-failure
+      - mysql
 
   wordpress3:
     image: wordpress:5.4.2-php7.2-apache
     environment:
-      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DB_USER: wpuser
-      WORDPRESS_DB_PASSWORD: wppass
-    volumes:
-      - wp_data:/var/www/html
-    networks:
-      - backend
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_AUTH_KEY: 'chave-auth-fixa-1234'
+      WORDPRESS_SECURE_AUTH_KEY: 'chave-secure-fixa-1234'
+      WORDPRESS_LOGGED_IN_KEY: 'chave-logged-fixa-1234'
+      WORDPRESS_NONCE_KEY: 'chave-nonce-fixa-1234'
+      WORDPRESS_AUTH_SALT: 'salt-auth-fixa-1234'
+      WORDPRESS_SECURE_AUTH_SALT: 'salt-secure-fixa-1234'
+      WORDPRESS_LOGGED_IN_SALT: 'salt-logged-fixa-1234'
+      WORDPRESS_NONCE_SALT: 'salt-nonce-fixa-1234'
     depends_on:
-      mysql:
-        condition: service_healthy
-    restart: on-failure
+      - mysql
 
   nginx:
     image: nginx:1.19.0
     ports:
       - "80:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - wp_data:/usr/share/nginx/html
-    networks:
-      - backend
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - wordpress1
       - wordpress2
       - wordpress3
-    restart: on-failure
+
+  locust:
+    image: grubykarol/locust
+    environment:
+      ATTACKED_HOST: http://nginx
+      LOCUST_OPTS: "--users 10 --spawn-rate 10"
+    volumes:
+      - ./locustfile.py:/locust/locustfile.py
+    ports:
+      - "8089:8089"
+    depends_on:
+      - nginx
 
 volumes:
-  wp_data:
-
-networks:
-  backend:
+  mysql_data:
