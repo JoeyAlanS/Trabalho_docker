@@ -5,5 +5,4 @@ class WordPressUser(HttpUser):
 
     @task
     def acessa_post_imagem_300kb(self):
-        # Substitua ?p=X pelo ID do post com imagem de 300KB
-        self.client.get("/?p=3")
+        self.client.get("/?p=11")
