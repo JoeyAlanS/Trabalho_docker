@@ -26,33 +26,33 @@ services:
     depends_on:
       - mysql
 
-  #wordpress2:
-     #image: wordpress:5.4.2-php7.2-apache
-     #environment:
-       #WORDPRESS_DB_HOST: mysql
-       #WORDPRESS_DB_NAME: wordpress
-       #WORDPRESS_DB_USER: wpuser
-       #WORDPRESS_DB_PASSWORD: wppass
-     #volumes:
-       #- ./data/wp_data:/var/www/html
-     #networks:
-       #- backend
-     #depends_on:
-       #- mysql
+  wordpress2:
+     image: wordpress:5.4.2-php7.2-apache
+     environment:
+       WORDPRESS_DB_HOST: mysql
+       WORDPRESS_DB_NAME: wordpress
+       WORDPRESS_DB_USER: wpuser
+       WORDPRESS_DB_PASSWORD: wppass
+     volumes:
+       - ./data/wp_data:/var/www/html
+     networks:
+       - backend
+     depends_on:
+       - mysql
 
-  #wordpress3:
-     #image: wordpress:5.4.2-php7.2-apache
-     #environment:
-      #WORDPRESS_DB_HOST: mysql
-      #WORDPRESS_DB_NAME: wordpress
-      #WORDPRESS_DB_USER: wpuser
-      #WORDPRESS_DB_PASSWORD: wppass
-     #volumes:
-       #- ./data/wp_data:/var/www/html
-     #networks:
-       #- backend
-     #depends_on:
-       #- mysql
+  wordpress3:
+     image: wordpress:5.4.2-php7.2-apache
+     environment:
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: wppass
+     volumes:
+       - ./data/wp_data:/var/www/html
+     networks:
+       - backend
+     depends_on:
+       - mysql
 
   nginx:
     image: nginx:1.19.0
@@ -65,12 +65,12 @@ services:
       - backend
     depends_on:
       - wordpress1
-    #  - wordpress2
-    #  - wordpress3
+      - wordpress2
+      - wordpress3
 
   locust:
     image: locustio/locust
-    command: -f /locust/locustfile_cenario1.py --host http://nginx --web-host 0.0.0.0
+    command: -f /locust/locustfile_cenario3.py --host http://nginx --web-host 0.0.0.0
     volumes:
       - ./locust:/locust
     ports:
