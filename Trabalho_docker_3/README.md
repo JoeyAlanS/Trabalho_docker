@@ -18,6 +18,11 @@ Testes de carga realizados com diferentes cenários para avaliação de performa
 | 3          | 100      | 5440  | 120          | 330      | 0       |
 | 3          | 1000     | 27838 | 2900         | 4800     | 11616   |
 
+### Gráficos
+
+![Cenário 1 - Tempo vs Usuários](c1_usuarios.png)
+![Cenário 1 - Req/s vs Instâncias](c1_instancias.png)
+
 ---
 
 ## Cenário 2: Texto 400KB - 2 minutos - Ramp up 2,10,50
@@ -33,6 +38,11 @@ Testes de carga realizados com diferentes cenários para avaliação de performa
 | 3          | 10       | 538   | 190          | 430      | 0       |
 | 3          | 100      | 5411  | 130          | 360      | 0       |
 | 3          | 1000     | 26272 | 2500         | 5600     | 11291   |
+
+### Gráficos
+
+![Cenário 2 - Tempo vs Usuários](c2_usuarios.png)
+![Cenário 2 - Req/s vs Instâncias](c2_instancias.png)
 
 ---
 
@@ -50,6 +60,11 @@ Testes de carga realizados com diferentes cenários para avaliação de performa
 | 3          | 100      | 5461  | 120          | 360      | 0       |
 | 3          | 1000     | 27920 | 2800         | 3400     | 8748    |
 
+### Gráficos
+
+![Cenário 3 - Tempo vs Usuários](c3_usuarios.png)
+![Cenário 3 - Req/s vs Instâncias](c3_instancias.png)
+
 ---
 
 ## Resumo das Métricas
@@ -60,6 +75,7 @@ Testes de carga realizados com diferentes cenários para avaliação de performa
 - **Falha/s**: Número de requisições que falharam por segundo
 
 ### Observações
+
 - Cenários com 1000 usuários apresentam significativo aumento de falhas
 - Performance mantém-se consistente entre instâncias para cargas moderadas (10-100 usuários)
 - Aumento de instâncias ajuda na distribuição de carga, mas não elimina falhas em cenários extremos
