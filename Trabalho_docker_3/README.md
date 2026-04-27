@@ -1,6 +1,6 @@
 # Relatório de Testes de Performance - Locust
 
-Testes de carga realizados com diferentes cenários para avaliação de performance do sistema.
+Testes de carga realizados com diferentes cenários para avaliação de performance do sistema WordPress utilizando múltiplas instâncias e o gerador de carga Locust.
 
 ---
 
@@ -20,8 +20,8 @@ Testes de carga realizados com diferentes cenários para avaliação de performa
 
 ### Gráficos
 
-![Cenário 1 - Tempo vs Usuários](c1_usuarios.png)
-![Cenário 1 - Req/s vs Instâncias](c1_instancias.png)
+![Cenário 1 - Tempo vs Usuários](Graficos_teste/c1_usuarios.png)
+![Cenário 1 - Req/s vs Instâncias](Graficos_teste/c1_instancias.png)
 
 ---
 
@@ -41,8 +41,8 @@ Testes de carga realizados com diferentes cenários para avaliação de performa
 
 ### Gráficos
 
-![Cenário 2 - Tempo vs Usuários](c2_usuarios.png)
-![Cenário 2 - Req/s vs Instâncias](c2_instancias.png)
+![Cenário 2 - Tempo vs Usuários](Graficos_teste/c2_usuarios.png)
+![Cenário 2 - Req/s vs Instâncias](Graficos_teste/c2_instancias.png)
 
 ---
 
@@ -62,20 +62,26 @@ Testes de carga realizados com diferentes cenários para avaliação de performa
 
 ### Gráficos
 
-![Cenário 3 - Tempo vs Usuários](c3_usuarios.png)
-![Cenário 3 - Req/s vs Instâncias](c3_instancias.png)
+![Cenário 3 - Tempo vs Usuários](Graficos_teste/c3_usuarios.png)
+![Cenário 3 - Req/s vs Instâncias](Graficos_teste/c3_instancias.png)
 
 ---
 
 ## Resumo das Métricas
 
-- **Req/s**: Requisições por segundo
-- **Mediana (ms)**: Tempo mediano de resposta em milissegundos
-- **95% (ms)**: Percentil 95 do tempo de resposta
-- **Falha/s**: Número de requisições que falharam por segundo
+- **Req/s**: Requisições por segundo  
+- **Mediana (ms)**: Tempo mediano de resposta em milissegundos  
+- **95% (ms)**: Percentil 95 do tempo de resposta  
+- **Falha/s**: Número de requisições que falharam por segundo  
 
-### Observações
+---
 
-- Cenários com 1000 usuários apresentam significativo aumento de falhas
-- Performance mantém-se consistente entre instâncias para cargas moderadas (10-100 usuários)
-- Aumento de instâncias ajuda na distribuição de carga, mas não elimina falhas em cenários extremos
+## Análise dos Resultados
+
+Os testes demonstram que o sistema apresenta bom desempenho para cargas de até 100 usuários, mantendo baixos tempos de resposta e ausência de falhas.
+
+Entretanto, ao atingir 1000 usuários simultâneos, observa-se um aumento significativo no tempo de resposta e no número de falhas, indicando que a infraestrutura atinge seu limite operacional.
+
+O aumento do número de instâncias do WordPress contribui para melhor distribuição da carga, proporcionando pequenas melhorias de desempenho. No entanto, essa estratégia não é suficiente para eliminar completamente as falhas em cenários de carga extrema.
+
+Além disso, observa-se que conteúdos mais leves, como a imagem de 300KB e o texto de 400KB, apresentam desempenho ligeiramente superior em comparação ao cenário com imagem de 1MB, evidenciando o impacto do tamanho do conteúdo no tempo de resposta do sistema.
