@@ -33,15 +33,20 @@ cenario2 = {
     'nome': 'Cenário 2: Texto 400KB - 2 minutos',
     'tipo': 'Texto 400KB',
     'dados': [
-        {'inst': 1, 'rampup': 10, 'usuarios': 520,  'req_s': 8849,  'mediana': 3200, 'p95': 7400,  'falhas': 0,   'taxa_falha': 0.00},
-        {'inst': 1, 'rampup': 15, 'usuarios': 570,  'req_s': 12139, 'mediana': 2900, 'p95': 4200,  'falhas': 0,   'taxa_falha': 0.00},
-        {'inst': 1, 'rampup': 25, 'usuarios': 635,  'req_s': 10804, 'mediana': 4500, 'p95': 6500,  'falhas': 603, 'taxa_falha': 0.06},
-        {'inst': 2, 'rampup': 5,  'usuarios': 510,  'req_s': 8999,  'mediana': 1700, 'p95': 4200,  'falhas': 0,   'taxa_falha': 0.00},
-        {'inst': 2, 'rampup': 10, 'usuarios': 520,  'req_s': 8182,  'mediana': 2300, 'p95': 1000,  'falhas': 0,   'taxa_falha': 0.00},
-        {'inst': 2, 'rampup': 15, 'usuarios': 580,  'req_s': 10412, 'mediana': 2400, 'p95': 9300,  'falhas': 488, 'taxa_falha': 0.05},
-        {'inst': 3, 'rampup': 5,  'usuarios': 515,  'req_s': 8296,  'mediana': 1800, 'p95': 5400,  'falhas': 0,   'taxa_falha': 0.00},
-        {'inst': 3, 'rampup': 8,  'usuarios': 520,  'req_s': 8798,  'mediana': 2300, 'p95': 9000,  'falhas': 0,   'taxa_falha': 0.00},
-        {'inst': 3, 'rampup': 10, 'usuarios': 580,  'req_s': 9009,  'mediana': 3200, 'p95': 9200,  'falhas': 795, 'taxa_falha': 0.05},
+        # INSTÂNCIA 1 (todos os 3 pontos)
+        {'inst': 1, 'rampup': 10, 'usuarios': 300, 'req_s': 10876, 'mediana': 900, 'p95': 1600, 'falhas': 0, 'taxa_falha': 0.00},
+        {'inst': 1, 'rampup': 10, 'usuarios': 450, 'req_s': 10256, 'mediana': 2300, 'p95': 5100, 'falhas': 0, 'taxa_falha': 0.00},
+        {'inst': 1, 'rampup': 10, 'usuarios': 660, 'req_s': 11240, 'mediana': 3600, 'p95': 5000, 'falhas': 208, 'taxa_falha': 0.02},
+        
+        # INSTÂNCIA 2 (todos os 3 pontos)
+        {'inst': 2, 'rampup': 10, 'usuarios': 300, 'req_s': 10582, 'mediana': 990, 'p95': 1800, 'falhas': 0, 'taxa_falha': 0.00},
+        {'inst': 2, 'rampup': 10, 'usuarios': 450, 'req_s': 11152, 'mediana': 1900, 'p95': 3800, 'falhas': 0, 'taxa_falha': 0.00},
+        {'inst': 2, 'rampup': 10, 'usuarios': 660, 'req_s': 11170, 'mediana': 1900, 'p95': 9200, 'falhas': 1181, 'taxa_falha': 0.11},
+        
+        # INSTÂNCIA 3 (todos os 3 pontos)
+        {'inst': 3, 'rampup': 10, 'usuarios': 300, 'req_s': 10765, 'mediana': 920, 'p95': 1700, 'falhas': 0, 'taxa_falha': 0.00},
+        {'inst': 3, 'rampup': 10, 'usuarios': 450, 'req_s': 11229, 'mediana': 1900, 'p95': 3400, 'falhas': 0, 'taxa_falha': 0.00},
+        {'inst': 3, 'rampup': 10, 'usuarios': 660, 'req_s': 11469, 'mediana': 2200, 'p95': 9200, 'falhas': 1005, 'taxa_falha': 0.09},
     ]
 }
 
@@ -49,15 +54,20 @@ cenario3 = {
     'nome': 'Cenário 3: Imagem 300KB - 2 minutos',
     'tipo': 'Imagem 300KB',
     'dados': [
-        {'inst': 1, 'rampup': 5,  'usuarios': 540,  'req_s': 9159,  'mediana': 1900, 'p95': 3900,  'falhas': 0,   'taxa_falha': 0.00},
-        {'inst': 1, 'rampup': 10, 'usuarios': 560,  'req_s': 10569, 'mediana': 3300, 'p95': 4500,  'falhas': 0,   'taxa_falha': 0.00},
-        {'inst': 1, 'rampup': 20, 'usuarios': 640,  'req_s': 10269, 'mediana': 4300, 'p95': 6900,  'falhas': 697, 'taxa_falha': 0.07},
-        {'inst': 2, 'rampup': 5,  'usuarios': 520,  'req_s': 8615,  'mediana': 1300, 'p95': 6600,  'falhas': 0,   'taxa_falha': 0.00},
-        {'inst': 2, 'rampup': 8,  'usuarios': 523,  'req_s': 9191,  'mediana': 1900, 'p95': 8100,  'falhas': 0,   'taxa_falha': 0.00},
-        {'inst': 2, 'rampup': 12, 'usuarios': 575,  'req_s': 8702,  'mediana': 2700, 'p95': 1100,  'falhas': 538, 'taxa_falha': 0.06},
-        {'inst': 3, 'rampup': 10, 'usuarios': 520,  'req_s': 11009, 'mediana': 2600, 'p95': 3800,  'falhas': 0,   'taxa_falha': 0.00},
-        {'inst': 3, 'rampup': 15, 'usuarios': 550,  'req_s': 12862, 'mediana': 2300, 'p95': 4300,  'falhas': 1,   'taxa_falha': 0.00},
-        {'inst': 3, 'rampup': 25, 'usuarios': 620,  'req_s': 12572, 'mediana': 2800, 'p95': 10000, 'falhas': 865, 'taxa_falha': 0.07},
+        # INSTÂNCIA 1 (todos os 3 pontos)
+        {'inst': 1, 'rampup': 10, 'usuarios': 300, 'req_s': 11477, 'mediana': 750, 'p95': 1400, 'falhas': 0, 'taxa_falha': 0.00},
+        {'inst': 1, 'rampup': 10, 'usuarios': 450, 'req_s': 10575, 'mediana': 2300, 'p95': 3600, 'falhas': 0, 'taxa_falha': 0.00},
+        {'inst': 1, 'rampup': 10, 'usuarios': 660, 'req_s': 11434, 'mediana': 3500, 'p95': 4800, 'falhas': 177, 'taxa_falha': 0.02},
+        
+        # INSTÂNCIA 2 (todos os 3 pontos)
+        {'inst': 2, 'rampup': 10, 'usuarios': 300, 'req_s': 11135, 'mediana': 800, 'p95': 1500, 'falhas': 0, 'taxa_falha': 0.00},
+        {'inst': 2, 'rampup': 10, 'usuarios': 450, 'req_s': 11236, 'mediana': 1900, 'p95': 3400, 'falhas': 0, 'taxa_falha': 0.00},
+        {'inst': 2, 'rampup': 10, 'usuarios': 660, 'req_s': 11138, 'mediana': 3800, 'p95': 5500, 'falhas': 845, 'taxa_falha': 0.08},
+        
+        # INSTÂNCIA 3 (todos os 3 pontos)
+        {'inst': 3, 'rampup': 10, 'usuarios': 300, 'req_s': 11007, 'mediana': 860, 'p95': 1600, 'falhas': 0, 'taxa_falha': 0.00},
+        {'inst': 3, 'rampup': 10, 'usuarios': 450, 'req_s': 11520, 'mediana': 1700, 'p95': 3800, 'falhas': 0, 'taxa_falha': 0.00},
+        {'inst': 3, 'rampup': 10, 'usuarios': 660, 'req_s': 11327, 'mediana': 1900, 'p95': 9100, 'falhas': 1004, 'taxa_falha': 0.09},
     ]
 }
 
