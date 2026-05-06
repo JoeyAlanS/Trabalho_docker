@@ -120,43 +120,43 @@ Análises possíveis:
 
 ### Cenário 1: Imagem 1MB
 
-![P95 vs Usuários](output_graphs/Cenário_1_Imagem_1MB__2_minutos_p95_vs_usuarios.png)
+![P95 vs Usuários](output_graphs/Cenario_1_Imagem_1MB__2_minutos_p95_vs_usuarios.png)
 
-![P95 vs Instâncias](output_graphs/Cenário_1_Imagem_1MB__2_minutos_p95_vs_instancias.png)
+![P95 vs Instâncias](output_graphs/Cenario_1_Imagem_1MB__2_minutos_p95_vs_instancias.png)
 
-![Taxa de Falha vs Usuários](output_graphs/Cenário_1_Imagem_1MB__2_minutos_taxa_falha_vs_usuarios.png)
+![Taxa de Falha vs Usuários](output_graphs/Cenario_1_Imagem_1MB__2_minutos_taxa_falha_vs_usuarios.png)
 
-![Taxa de Falha vs Instâncias](output_graphs/Cenário_1_Imagem_1MB__2_minutos_taxa_falha_vs_instancias.png)
+![Taxa de Falha vs Instâncias](output_graphs/Cenario_1_Imagem_1MB__2_minutos_taxa_falha_vs_instancias.png)
 
 ### Cenário 2: Texto 400KB
 
-![P95 vs Usuários](output_graphs/Cenário_2_Texto_400KB__2_minutos_p95_vs_usuarios.png)
+![P95 vs Usuários](output_graphs/Cenario_2_Texto_400KB__2_minutos_p95_vs_usuarios.png)
 
-![P95 vs Instâncias](output_graphs/Cenário_2_Texto_400KB__2_minutos_p95_vs_instancias.png)
+![P95 vs Instâncias](output_graphs/Cenario_2_Texto_400KB__2_minutos_p95_vs_instancias.png)
 
-![Taxa de Falha vs Usuários](output_graphs/Cenário_2_Texto_400KB__2_minutos_taxa_falha_vs_usuarios.png)
+![Taxa de Falha vs Usuários](output_graphs/Cenario_2_Texto_400KB__2_minutos_taxa_falha_vs_usuarios.png)
 
-![Taxa de Falha vs Instâncias](output_graphs/Cenário_2_Texto_400KB__2_minutos_taxa_falha_vs_instancias.png)
+![Taxa de Falha vs Instâncias](output_graphs/Cenario_2_Texto_400KB__2_minutos_taxa_falha_vs_instancias.png)
 
 ### Cenário 3: Imagem 300KB
 
-![P95 vs Usuários](output_graphs/Cenário_3_Imagem_300KB__2_minutos_p95_vs_usuarios.png)
+![P95 vs Usuários](output_graphs/Cenario_3_Imagem_300KB__2_minutos_p95_vs_usuarios.png)
 
-![P95 vs Instâncias](output_graphs/Cenário_3_Imagem_300KB__2_minutos_p95_vs_instancias.png)
+![P95 vs Instâncias](output_graphs/Cenario_3_Imagem_300KB__2_minutos_p95_vs_instancias.png)
 
-![Taxa de Falha vs Usuários](output_graphs/Cenário_3_Imagem_300KB__2_minutos_taxa_falha_vs_usuarios.png)
+![Taxa de Falha vs Usuários](output_graphs/Cenario_3_Imagem_300KB__2_minutos_taxa_falha_vs_usuarios.png)
 
-![Taxa de Falha vs Instâncias](output_graphs/Cenário_3_Imagem_300KB__2_minutos_taxa_falha_vs_instancias.png)
+![Taxa de Falha vs Instâncias](output_graphs/Cenario_3_Imagem_300KB__2_minutos_taxa_falha_vs_instancias.png)
 
 ### Cenário 4: Híbrido
 
-![P95 vs Usuários](output_graphs/Cenário_4_Híbrido__2_minutos_p95_vs_usuarios.png)
+![P95 vs Usuários](output_graphs/Cenario_4_Híbrido__2_minutos_p95_vs_usuarios.png)
 
-![P95 vs Instâncias](output_graphs/Cenário_4_Híbrido__2_minutos_p95_vs_instancias.png)
+![P95 vs Instâncias](output_graphs/Cenario_4_Híbrido__2_minutos_p95_vs_instancias.png)
 
-![Taxa de Falha vs Usuários](output_graphs/Cenário_4_Híbrido__2_minutos_taxa_falha_vs_usuarios.png)
+![Taxa de Falha vs Usuários](output_graphs/Cenario_4_Híbrido__2_minutos_taxa_falha_vs_usuarios.png)
 
-![Taxa de Falha vs Instâncias](output_graphs/Cenário_4_Híbrido__2_minutos_taxa_falha_vs_instancias.png)
+![Taxa de Falha vs Instâncias](output_graphs/Cenario_4_Híbrido__2_minutos_taxa_falha_vs_instancias.png)
 
 ### Comparação Entre Cenários
 
