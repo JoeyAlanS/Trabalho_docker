@@ -2,18 +2,16 @@ version: '3'
 
 services:
   api:
-    image: linkextractor-api:python
+    image: linkextractor-api:python-no-cache
     build:
       context: ./api
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
     environment:
-      - REDIS_URL=redis://redis:6379
-    depends_on:
-      - redis
+      - REDIS_URL=redis://localhost:6379
     networks:
-      - linkextractor-net
+      - test-net
 
   web:
     image: linkextractor-web:php
@@ -25,15 +23,14 @@ services:
     depends_on:
       - api
     networks:
-      - linkextractor-net
+      - test-net
 
   redis:
     image: redis
     ports:
       - "6379:6379"
     networks:
-      - linkextractor-net
+      - test-net
 
 networks:
-  linkextractor-net:
-    driver: bridge
+  test-net:

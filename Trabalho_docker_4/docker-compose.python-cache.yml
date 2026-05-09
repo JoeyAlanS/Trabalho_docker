@@ -5,7 +5,7 @@ services:
     image: linkextractor-api:python
     build:
       context: ./api
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.python
     ports:
       - "5000:5000"
     environment:
@@ -13,7 +13,7 @@ services:
     depends_on:
       - redis
     networks:
-      - linkextractor-net
+      - test-net
 
   web:
     image: linkextractor-web:php
@@ -25,15 +25,14 @@ services:
     depends_on:
       - api
     networks:
-      - linkextractor-net
+      - test-net
 
   redis:
     image: redis
     ports:
       - "6379:6379"
     networks:
-      - linkextractor-net
+      - test-net
 
 networks:
-  linkextractor-net:
-    driver: bridge
+  test-net:

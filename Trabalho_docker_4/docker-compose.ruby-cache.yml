@@ -2,18 +2,18 @@ version: '3'
 
 services:
   api:
-    image: linkextractor-api:python
+    image: linkextractor-api:ruby
     build:
       context: ./api
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.ruby
     ports:
-      - "5000:5000"
+      - "4567:4567"
     environment:
       - REDIS_URL=redis://redis:6379
     depends_on:
       - redis
     networks:
-      - linkextractor-net
+      - test-net
 
   web:
     image: linkextractor-web:php
@@ -21,19 +21,18 @@ services:
     ports:
       - "80:80"
     environment:
-      - API_ENDPOINT=http://api:5000/api/
+      - API_ENDPOINT=http://api:4567/api/
     depends_on:
       - api
     networks:
-      - linkextractor-net
+      - test-net
 
   redis:
     image: redis
     ports:
       - "6379:6379"
     networks:
-      - linkextractor-net
+      - test-net
 
 networks:
-  linkextractor-net:
-    driver: bridge
+  test-net:

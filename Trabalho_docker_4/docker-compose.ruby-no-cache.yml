@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  api:
+    image: linkextractor-api:ruby-no-cache
+    build:
+      context: ./api
+      dockerfile: Dockerfile.ruby-no-cache
+    ports:
+      - "4567:4567"
+    networks:
+      - test-net
+
+  web:
+    image: linkextractor-web:php
+    build: ./www
+    ports:
+      - "80:80"
+    environment:
+      - API_ENDPOINT=http://api:4567/api/
+    depends_on:
+      - api
+    networks:
+      - test-net
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - test-net
+
+networks:
+  test-net:

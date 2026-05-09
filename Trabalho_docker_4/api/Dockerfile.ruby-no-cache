@@ -1,0 +1,11 @@
+FROM ruby:2.6
+LABEL maintainer="Joey"
+
+WORKDIR /app
+COPY Gemfile /app/
+RUN bundle install
+
+COPY linkextractor-no-cache.rb /app/main.rb
+RUN chmod a+x /app/main.rb
+
+CMD ["ruby", "./main.rb"]
