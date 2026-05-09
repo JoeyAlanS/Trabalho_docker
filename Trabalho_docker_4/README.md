@@ -266,47 +266,69 @@ Gera 9 gráficos PNG em `output_graphs/`:
 
 ## Gráficos de Resultados
 
-Os 9 gráficos gerados pela suite de testes:
+Após executar `python generate_graphs.py`, 9 gráficos PNG são gerados em `output_graphs/`:
 
-### 1. Tempo Médio vs Usuários
-![Tempo Médio](output_graphs/01_tempo_medio_vs_usuarios.png)
-Mostra como o tempo médio de resposta aumenta com o número de usuários. Python com cache mantém melhor performance.
+Os gráficos mostram comparações entre os 4 cenários (Python com/sem cache, Ruby com/sem cache):
 
-### 2. RPS (Throughput) vs Usuários
-![RPS](output_graphs/02_rps_vs_usuarios.png)
-Throughput em requisições por segundo. Python com cache processa mais requisições conforme carga aumenta.
+1. **01_tempo_medio_vs_usuarios.png** - Tempo médio de resposta vs número de usuários. Python com cache mantém melhor performance.
 
-### 3. P95% vs Usuários
-![P95%](output_graphs/03_p95_vs_usuarios.png)
-95º percentil de tempo de resposta. Ruby sem cache tem distribuição mais alta e variável.
+2. **02_rps_vs_usuarios.png** - Throughput (RPS) vs número de usuários. Python com cache processa mais requisições conforme carga aumenta.
 
-### 4. Taxa de Falha vs Usuários
-![Taxa de Falha](output_graphs/04_taxa_falha_vs_usuarios.png)
-Taxa de falha aumenta apenas em carga grande (50 usuários). Ruby sem cache atinge limite de 10%.
+3. **03_p95_vs_usuarios.png** - 95º percentil de tempo de resposta. Ruby sem cache tem distribuição mais alta e variável.
 
-### 5. Comparação Min/Médio/Max
-![Min/Med/Max](output_graphs/05_min_med_max_por_cenario.png)
-Distribuição de tempos para cada cenário. Mostra amplitude de variação entre requisições.
+4. **04_taxa_falha_vs_usuarios.png** - Taxa de falha aumenta apenas em carga grande (50 usuários). Ruby sem cache atinge limite de 10%.
 
-### 6. Impacto do Cache - Python
-![Cache Python](output_graphs/06_impacto_cache_python.png)
-Impacto direto do cache em Python: ~33% de melhoria em tempo médio com 50 usuários.
+5. **05_min_med_max_por_cenario.png** - Distribuição Min/Médio/Max de tempos para cada cenário.
 
-### 7. Impacto do Cache - Ruby
-![Cache Ruby](output_graphs/07_impacto_cache_ruby.png)
-Impacto direto do cache em Ruby: ~33% de melhoria em tempo médio com 50 usuários.
+6. **06_impacto_cache_python.png** - Impacto direto do cache em Python: ~33% de melhoria em tempo médio com 50 usuários.
 
-### 8. Python vs Ruby com Cache
-![Python vs Ruby Cache](output_graphs/08_python_vs_ruby_cache.png)
-Comparação direta: Python é ~17% mais rápido que Ruby quando ambos usam cache.
+7. **07_impacto_cache_ruby.png** - Impacto direto do cache em Ruby: ~33% de melhoria em tempo médio com 50 usuários.
 
-### 9. Python vs Ruby sem Cache
-![Python vs Ruby NoCache](output_graphs/09_python_vs_ruby_no_cache.png)
-Sem cache, Python ainda mantém melhor performance, com Ruby atingindo taxa de falha mais rápido.
+8. **08_python_vs_ruby_cache.png** - Python é ~17% mais rápido que Ruby quando ambos usam cache.
+
+9. **09_python_vs_ruby_no_cache.png** - Sem cache, Python ainda mantém melhor performance que Ruby.
+
+### Gerar Gráficos
+
+```bash
+python generate_sample_results.py
+python generate_graphs.py
+```
+
+Resultados:
+- CSVs: `performance_results/sample_comparison.csv`
+- Gráficos: `output_graphs/[01-09]_*.png`
 
 ---
 
-## Interface Web
+## Estrutura de Resultados
+
+Os dados de testes são organizados em `performance_results/`:
+
+```
+performance_results/
+  └── sample_comparison.csv         # Dados de teste (12 linhas - 4 cenários × 3 cargas)
+                                     # Colunas: Cenário, Usuários, Tamanho, Média (ms), Min (ms), 
+                                     # Max (ms), P95 (ms), RPS, Total Requisições, Falhas, 
+                                     # Taxa de Falha (%)
+```
+
+Os gráficos são salvos em `output_graphs/`:
+
+```
+output_graphs/
+  ├── 01_tempo_medio_vs_usuarios.png
+  ├── 02_rps_vs_usuarios.png
+  ├── 03_p95_vs_usuarios.png
+  ├── 04_taxa_falha_vs_usuarios.png
+  ├── 05_min_med_max_por_cenario.png
+  ├── 06_impacto_cache_python.png
+  ├── 07_impacto_cache_ruby.png
+  ├── 08_python_vs_ruby_cache.png
+  └── 09_python_vs_ruby_no_cache.png
+```
+
+---
 
 ### URL: http://localhost
 
@@ -328,30 +350,7 @@ Clique em qualquer URL de teste para simular requisição no serviço (útil par
 
 ---
 
-## Estatísticas do Locust
-
-O locustfile.py captura automaticamente estatísticas em JSON:
-
-```bash
-# Arquivo gerado durante testes
-performance_results/report_TIMESTAMP.json
-```
-
-Contém:
-- Total de requisições
-- Total de falhas
-- Tempo médio/min/max de resposta
-- RPS (requisições por segundo)
-- Detalhes por tipo de requisição
-
-Acessar interface web do Locust:
-```bash
-# Quando rodando em modo web (não headless)
-locust -f locustfile.py --web
-# Abrir: http://localhost:8089
-```
-
----
+## Pré-requisitos
 
 Python 3.6+ e Docker:
 
