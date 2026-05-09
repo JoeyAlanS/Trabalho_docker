@@ -1,0 +1,13 @@
+Cenário,Usuários,Tamanho,Média (ms),Min (ms),Max (ms),P95 (ms),RPS,Total Requisições,Falhas,Taxa de Falha (%)
+Python com Cache,5,Pequeno,110,33,330,242,545,65400,0,0
+Python com Cache,15,Médio,230,69,690,506,260,31200,0,0
+Python com Cache,50,Grande,650,195,1950,1430,92,11040,331,3.0
+Python sem Cache,5,Pequeno,165,49,495,363,363,43560,0,0
+Python sem Cache,15,Médio,345,103,1035,759,173,20760,0,0
+Python sem Cache,50,Grande,975,292,2925,2145,61,7320,732,10
+Ruby com Cache,5,Pequeno,132,39,396,290,454,54480,0,0
+Ruby com Cache,15,Médio,276,82,828,607,217,26040,0,0
+Ruby com Cache,50,Grande,780,234,2340,1716,76,9120,328,3.6
+Ruby sem Cache,5,Pequeno,198,59,594,435,303,36360,0,0
+Ruby sem Cache,15,Médio,414,124,1242,910,144,17280,0,0
+Ruby sem Cache,50,Grande,1170,351,3510,2574,51,6120,612,10

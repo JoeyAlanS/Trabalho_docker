@@ -8,10 +8,6 @@ __pycache__/
 *$py.class
 *.so
 
-# Test Results (Generated at runtime)
-performance_results/
-output_graphs/
-
 # IDE
 .vscode/
 .idea/

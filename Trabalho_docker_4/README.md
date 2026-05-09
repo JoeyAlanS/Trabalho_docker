@@ -268,30 +268,51 @@ Gera 9 gráficos PNG em `output_graphs/`:
 
 Após executar `python generate_graphs.py`, 9 gráficos PNG são gerados em `output_graphs/`:
 
-Os gráficos mostram comparações entre os 4 cenários (Python com/sem cache, Ruby com/sem cache):
+### 1. Tempo Médio vs Usuários
+![Tempo Médio vs Usuários](output_graphs/01_tempo_medio_vs_usuarios.png)
+Mostra como o tempo médio de resposta aumenta com o número de usuários. Python com cache mantém melhor performance.
 
-1. **01_tempo_medio_vs_usuarios.png** - Tempo médio de resposta vs número de usuários. Python com cache mantém melhor performance.
+### 2. RPS (Throughput) vs Usuários
+![RPS vs Usuários](output_graphs/02_rps_vs_usuarios.png)
+Throughput em requisições por segundo. Python com cache processa mais requisições conforme carga aumenta.
 
-2. **02_rps_vs_usuarios.png** - Throughput (RPS) vs número de usuários. Python com cache processa mais requisições conforme carga aumenta.
+### 3. P95% vs Usuários
+![P95% vs Usuários](output_graphs/03_p95_vs_usuarios.png)
+95º percentil de tempo de resposta. Ruby sem cache tem distribuição mais alta e variável.
 
-3. **03_p95_vs_usuarios.png** - 95º percentil de tempo de resposta. Ruby sem cache tem distribuição mais alta e variável.
+### 4. Taxa de Falha vs Usuários
+![Taxa de Falha vs Usuários](output_graphs/04_taxa_falha_vs_usuarios.png)
+Taxa de falha aumenta apenas em carga grande (50 usuários). Ruby sem cache atinge limite de 10%.
 
-4. **04_taxa_falha_vs_usuarios.png** - Taxa de falha aumenta apenas em carga grande (50 usuários). Ruby sem cache atinge limite de 10%.
+### 5. Comparação Min/Médio/Max
+![Min/Médio/Max por Cenário](output_graphs/05_min_med_max_por_cenario.png)
+Distribuição Min/Médio/Max de tempos para cada cenário.
 
-5. **05_min_med_max_por_cenario.png** - Distribuição Min/Médio/Max de tempos para cada cenário.
+### 6. Impacto do Cache - Python
+![Impacto Cache Python](output_graphs/06_impacto_cache_python.png)
+Impacto direto do cache em Python: ~33% de melhoria em tempo médio com 50 usuários.
 
-6. **06_impacto_cache_python.png** - Impacto direto do cache em Python: ~33% de melhoria em tempo médio com 50 usuários.
+### 7. Impacto do Cache - Ruby
+![Impacto Cache Ruby](output_graphs/07_impacto_cache_ruby.png)
+Impacto direto do cache em Ruby: ~33% de melhoria em tempo médio com 50 usuários.
 
-7. **07_impacto_cache_ruby.png** - Impacto direto do cache em Ruby: ~33% de melhoria em tempo médio com 50 usuários.
+### 8. Python vs Ruby com Cache
+![Python vs Ruby com Cache](output_graphs/08_python_vs_ruby_cache.png)
+Comparação direta: Python é ~17% mais rápido que Ruby quando ambos usam cache.
 
-8. **08_python_vs_ruby_cache.png** - Python é ~17% mais rápido que Ruby quando ambos usam cache.
+### 9. Python vs Ruby sem Cache
+![Python vs Ruby sem Cache](output_graphs/09_python_vs_ruby_no_cache.png)
+Sem cache, Python ainda mantém melhor performance que Ruby.
 
-9. **09_python_vs_ruby_no_cache.png** - Sem cache, Python ainda mantém melhor performance que Ruby.
+---
 
-### Gerar Gráficos
+## Como Gerar os Gráficos
 
 ```bash
+# Gerar dados de exemplo
 python generate_sample_results.py
+
+# Gerar 9 gráficos PNG
 python generate_graphs.py
 ```
 
