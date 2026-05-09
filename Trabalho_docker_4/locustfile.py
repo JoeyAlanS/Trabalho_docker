@@ -2,11 +2,13 @@
 # -*- coding: utf-8 -*-
 """
 Testes de Desempenho - Link Extractor
-Autor: Joey
 """
 
-from locust import HttpUser, task, between
+from locust import HttpUser, task, between, events
 import random
+import json
+import time
+from pathlib import Path
 
 class LinkExtractorUser(HttpUser):
     """
@@ -59,3 +61,43 @@ class LinkExtractorUser(HttpUser):
     def on_stop(self):
         """Executado quando o usuário para"""
         print(f"Usuário completou {self.request_count} requisições")
+
+
+# Evento para exportar estatísticas em formato JSON
+@events.test_stop.add_listener
+def on_test_stop(environment, **kwargs):
+    """Executado quando o teste para"""
+    stats = environment.stats
+    
+    results = {
+        "timestamp": int(time.time()),
+        "total_requests": stats.total.num_requests,
+        "total_failures": stats.total.num_failures,
+        "avg_response_time": stats.total.avg_response_time,
+        "min_response_time": stats.total.min_response_time,
+        "max_response_time": stats.total.max_response_time,
+        "rps": stats.total.total_rps,
+        "requests": []
+    }
+    
+    for req_name in sorted(stats.entries.keys()):
+        req_stats = stats.entries[req_name]
+        results["requests"].append({
+            "name": req_name,
+            "num_requests": req_stats.num_requests,
+            "num_failures": req_stats.num_failures,
+            "avg_response_time": req_stats.avg_response_time,
+            "min_response_time": req_stats.min_response_time,
+            "max_response_time": req_stats.max_response_time,
+            "rps": req_stats.total_rps
+        })
+    
+    # Salvar em arquivo JSON
+    results_dir = Path("performance_results")
+    results_dir.mkdir(exist_ok=True)
+    report_file = results_dir / f"report_{int(time.time())}.json"
+    
+    with open(report_file, 'w') as f:
+        json.dump(results, f, indent=2)
+    
+    print(f"\nRelatório salvo em: {report_file}")
