@@ -17,15 +17,15 @@ cenario1 = {
     'nome': 'Cenário 1: Imagem 1MB - 2 minutos',
     'tipo': 'Imagem 1MB',
     'dados': [
-        {'inst': 1, 'rampup': 2,  'usuarios': 600,   'req_s': 6319,  'mediana': 170,   'p95': 850,    'falhas': 0,    'taxa_falha': 0.00},
-        {'inst': 1, 'rampup': 10, 'usuarios': 1200,  'req_s': 11665, 'mediana': 3400,  'p95': 7900,   'falhas': 0,    'taxa_falha': 0.00},
-        {'inst': 1, 'rampup': 50, 'usuarios': 1500,  'req_s': 11479, 'mediana': 5000,  'p95': 13000,  'falhas': 1252, 'taxa_falha': 0.11},
-        {'inst': 2, 'rampup': 2,  'usuarios': 570,   'req_s': 2484,  'mediana': 2700,  'p95': 6100,   'falhas': 0,    'taxa_falha': 0.00},
-        {'inst': 2, 'rampup': 10, 'usuarios': 700,   'req_s': 2984,  'mediana': 8600,  'p95': 35000,  'falhas': 0,    'taxa_falha': 0.00},
-        {'inst': 2, 'rampup': 50, 'usuarios': 900,   'req_s': 33844, 'mediana': 2600,  'p95': 15000,  'falhas': 3486, 'taxa_falha': 0.10},
-        {'inst': 3, 'rampup': 2,  'usuarios': 520,   'req_s': 4685,  'mediana': 180,   'p95': 720,    'falhas': 0,    'taxa_falha': 0.00},
-        {'inst': 3, 'rampup': 10, 'usuarios': 600,   'req_s': 4591,  'mediana': 7400,  'p95': 23000,  'falhas': 0,    'taxa_falha': 0.00},
-        {'inst': 3, 'rampup': 40, 'usuarios': 1000,  'req_s': 39544, 'mediana': 4600,  'p95': 18000,  'falhas': 4787, 'taxa_falha': 0.12},
+        {'inst': 1, 'rampup': 10, 'usuarios': 300,  'req_s': 10953, 'mediana': 830,  'p95': 1900,  'falhas': 0,    'taxa_falha': 0.00},
+        {'inst': 1, 'rampup': 10, 'usuarios': 450,  'req_s': 10734, 'mediana': 2200, 'p95': 3500,  'falhas': 0,    'taxa_falha': 0.00},
+        {'inst': 1, 'rampup': 10, 'usuarios': 660,  'req_s': 11686, 'mediana': 3300, 'p95': 4700,  'falhas': 218,  'taxa_falha': 0.02},
+        {'inst': 2, 'rampup': 10, 'usuarios': 300,  'req_s': 11329, 'mediana': 780,  'p95': 1500,  'falhas': 0,    'taxa_falha': 0.00},
+        {'inst': 2, 'rampup': 10, 'usuarios': 450,  'req_s': 11768, 'mediana': 1600, 'p95': 3800,  'falhas': 0,    'taxa_falha': 0.00},
+        {'inst': 2, 'rampup': 10, 'usuarios': 660,  'req_s': 10987, 'mediana': 2700, 'p95': 7200,  'falhas': 1007, 'taxa_falha': 0.09},
+        {'inst': 3, 'rampup': 10, 'usuarios': 300,  'req_s': 11040, 'mediana': 850,  'p95': 1600,  'falhas': 0,    'taxa_falha': 0.00},
+        {'inst': 3, 'rampup': 10, 'usuarios': 450,  'req_s': 10984, 'mediana': 2100, 'p95': 3400,  'falhas': 0,    'taxa_falha': 0.00},
+        {'inst': 3, 'rampup': 10, 'usuarios': 660,  'req_s': 11543, 'mediana': 3600, 'p95': 5200,  'falhas': 828,  'taxa_falha': 0.07},
     ]
 }
 
@@ -75,15 +75,15 @@ cenario4 = {
     'nome': 'Cenário 4: Híbrido - 2 minutos',
     'tipo': 'Híbrido',
     'dados': [
-        {'inst': 1, 'rampup': 2,  'usuarios': 800,   'req_s': 7922,  'mediana': 170,  'p95': 1100,  'falhas': 0,    'taxa_falha': 0.00},
-        {'inst': 1, 'rampup': 10, 'usuarios': 1000,  'req_s': 12096, 'mediana': 4200, 'p95': 8500,  'falhas': 0,    'taxa_falha': 0.00},
-        {'inst': 1, 'rampup': 30, 'usuarios': 1250,  'req_s': 14095, 'mediana': 4500, 'p95': 13000, 'falhas': 704,  'taxa_falha': 0.05},
-        {'inst': 2, 'rampup': 2,  'usuarios': 1000,  'req_s': 7952,  'mediana': 250,  'p95': 1100,  'falhas': 0,    'taxa_falha': 0.00},
-        {'inst': 2, 'rampup': 10, 'usuarios': 1200,  'req_s': 12558, 'mediana': 2600, 'p95': 10000, 'falhas': 0,    'taxa_falha': 0.00},
-        {'inst': 2, 'rampup': 30, 'usuarios': 1400,  'req_s': 37285, 'mediana': 4500, 'p95': 13000, 'falhas': 745,  'taxa_falha': 0.02},
-        {'inst': 3, 'rampup': 2,  'usuarios': 1200,  'req_s': 7969,  'mediana': 230,  'p95': 1100,  'falhas': 0,    'taxa_falha': 0.00},
-        {'inst': 3, 'rampup': 10, 'usuarios': 1560,  'req_s': 11407, 'mediana': 2600, 'p95': 19000, 'falhas': 0,    'taxa_falha': 0.00},
-        {'inst': 3, 'rampup': 30, 'usuarios': 1700,  'req_s': 24405, 'mediana': 1952, 'p95': 29000, 'falhas': 1952, 'taxa_falha': 0.08},
+        {'inst': 1, 'rampup': 10, 'usuarios': 300,  'req_s': 11305, 'mediana': 1300, 'p95': 2200,  'falhas': 0,    'taxa_falha': 0.00},
+        {'inst': 1, 'rampup': 10, 'usuarios': 450,  'req_s': 13696, 'mediana': 1900, 'p95': 3200,  'falhas': 0,    'taxa_falha': 0.00},
+        {'inst': 1, 'rampup': 10, 'usuarios': 660,  'req_s': 15510, 'mediana': 2800, 'p95': 4300,  'falhas': 1685, 'taxa_falha': 0.11},
+        {'inst': 2, 'rampup': 10, 'usuarios': 300,  'req_s': 11487, 'mediana': 1300, 'p95': 2000,  'falhas': 0,    'taxa_falha': 0.00},
+        {'inst': 2, 'rampup': 10, 'usuarios': 450,  'req_s': 11318, 'mediana': 2600, 'p95': 3700,  'falhas': 0,    'taxa_falha': 0.00},
+        {'inst': 2, 'rampup': 10, 'usuarios': 660,  'req_s': 12536, 'mediana': 3800, 'p95': 5200,  'falhas': 1138, 'taxa_falha': 0.09},
+        {'inst': 3, 'rampup': 10, 'usuarios': 300,  'req_s': 11258, 'mediana': 1400, 'p95': 2200,  'falhas': 0,    'taxa_falha': 0.00},
+        {'inst': 3, 'rampup': 10, 'usuarios': 450,  'req_s': 11052, 'mediana': 2600, 'p95': 4300,  'falhas': 0,    'taxa_falha': 0.00},
+        {'inst': 3, 'rampup': 10, 'usuarios': 660,  'req_s': 15428, 'mediana': 2000, 'p95': 5500,  'falhas': 1096, 'taxa_falha': 0.07},
     ]
 }
 

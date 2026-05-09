@@ -71,7 +71,7 @@ services:
 
   locust:
     image: locustio/locust
-    command: -f /locust/locustfile_cenario3.py --host http://nginx --web-host 0.0.0.0
+    command: -f /locust/locustfile_hibrido.py --host http://nginx --web-host 0.0.0.0
     volumes:
       - ./locust:/locust
     ports:
