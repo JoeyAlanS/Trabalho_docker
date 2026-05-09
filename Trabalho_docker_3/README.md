@@ -19,17 +19,17 @@ Gráficos em `output_graphs/`:
 
 | Instâncias | Ramp up | Usuários | Req/s | Mediana (ms) | 95% (ms) | Falhas | Taxa Falha |
 |------------|---------|----------|-------|--------------|----------|--------|-----------|
-| 1          | 2       | 600      | 6319  | 170          | 850      | 0      | 0%        |
-| 1          | 10      | 1200     | 11665 | 3400         | 7900     | 0      | 0%        |
-| 1          | 50      | 1500     | 11479 | 5000         | 13000    | 1252   | 11%       |
-| 2          | 2       | 570      | 2484  | 2700         | 6100     | 0      | 0%        |
-| 2          | 10      | 700      | 2984  | 8600         | 35000    | 0      | 0%        |
-| 2          | 50      | 900      | 33844 | 2600         | 15000    | 3486   | 10%       |
-| 3          | 2       | 520      | 4685  | 180          | 720      | 0      | 0%        |
-| 3          | 10      | 600      | 4591  | 7400         | 23000    | 0      | 0%        |
-| 3          | 40      | 1000     | 39544 | 4600         | 18000    | 4787   | 12%       |
+| 1          | 10      | 300      | 10953 | 830          | 1900     | 0      | 0%        |
+| 1          | 10      | 450      | 10734 | 2200         | 3500     | 0      | 0%        |
+| 1          | 10      | 660      | 11686 | 3300         | 4700     | 218    | 2%        |
+| 2          | 10      | 300      | 11329 | 780          | 1500     | 0      | 0%        |
+| 2          | 10      | 450      | 11768 | 1600         | 3800     | 0      | 0%        |
+| 2          | 10      | 660      | 10987 | 2700         | 7200     | 1007   | 9%        |
+| 3          | 10      | 300      | 11040 | 850          | 1600     | 0      | 0%        |
+| 3          | 10      | 450      | 10984 | 2100         | 3400     | 0      | 0%        |
+| 3          | 10      | 660      | 11543 | 3600         | 5200     | 828    | 7%        |
 
-Performance crítica com 1 instância em carga elevada (5s mediano inaceitável). Arquivo de 1MB requer 3 instâncias para performance aceitável.
+Performance aceitável com distribuição uniforme entre instâncias. Tempo mediano 0.8-3.6s com ramp-up de 10s. Taxa de falha controlada (0-9%). Arquivo de 1MB requer no mínimo 2-3 instâncias para carga acima de 450 usuários.
 
 ---
 
@@ -37,17 +37,17 @@ Performance crítica com 1 instância em carga elevada (5s mediano inaceitável)
 
 | Instâncias | Ramp up | Usuários | Req/s | Mediana (ms) | 95% (ms) | Falhas | Taxa Falha |
 |------------|---------|----------|-------|--------------|----------|--------|-----------|
-| 1          | 10      | 520      | 8849  | 3200         | 7400     | 0      | 0%        |
-| 1          | 15      | 570      | 12139 | 2900         | 4200     | 0      | 0%        |
-| 1          | 25      | 635      | 10804 | 4500         | 6500     | 603    | 6%        |
-| 2          | 5       | 510      | 8999  | 1700         | 4200     | 0      | 0%        |
-| 2          | 10      | 520      | 8182  | 2300         | 1000     | 0      | 0%        |
-| 2          | 15      | 580      | 10412 | 2400         | 9300     | 488    | 5%        |
-| 3          | 5       | 515      | 8296  | 1800         | 5400     | 0      | 0%        |
-| 3          | 8       | 520      | 8798  | 2300         | 9000     | 0      | 0%        |
-| 3          | 10      | 580      | 9009  | 3200         | 9200     | 795    | 5%        |
+| 1          | 10      | 300      | 10876 | 900          | 1600     | 0      | 0%        |
+| 1          | 10      | 450      | 10256 | 2300         | 5100     | 0      | 0%        |
+| 1          | 10      | 660      | 11240 | 3600         | 5000     | 208    | 2%        |
+| 2          | 10      | 300      | 10582 | 990          | 1800     | 0      | 0%        |
+| 2          | 10      | 450      | 11152 | 1900         | 3800     | 0      | 0%        |
+| 2          | 10      | 660      | 11170 | 1900         | 9200     | 1181   | 11%       |
+| 3          | 10      | 300      | 10765 | 920          | 1700     | 0      | 0%        |
+| 3          | 10      | 450      | 11229 | 1900         | 3400     | 0      | 0%        |
+| 3          | 10      | 660      | 11469 | 2200         | 9200     | 1005   | 9%        |
 
-Performance aceitável. Tempo mediano 1.7-3.2s com 3 instâncias. Taxa de falha controlada (0-6%). Texto 400KB oferece melhor performance que imagens maiores.
+Performance excelente com escalação linear. Tempo mediano 0.9-3.6s com ramp-up 10s e até 660 usuários. Taxa de falha controlada (0-11%). Texto 400KB oferece melhor performance que imagens maiores.
 
 ---
 
@@ -55,17 +55,17 @@ Performance aceitável. Tempo mediano 1.7-3.2s com 3 instâncias. Taxa de falha 
 
 | Instâncias | Ramp up | Usuários | Req/s | Mediana (ms) | 95% (ms) | Falhas | Taxa Falha |
 |------------|---------|----------|-------|--------------|----------|--------|-----------|
-| 1          | 5       | 540      | 9159  | 1900         | 3900     | 0      | 0%        |
-| 1          | 10      | 560      | 10569 | 3300         | 4500     | 0      | 0%        |
-| 1          | 20      | 640      | 10269 | 4300         | 6900     | 697    | 7%        |
-| 2          | 5       | 520      | 8615  | 1300         | 6600     | 0      | 0%        |
-| 2          | 8       | 523      | 9191  | 1900         | 8100     | 0      | 0%        |
-| 2          | 12      | 575      | 8702  | 2700         | 1100     | 538    | 6%        |
-| 3          | 10      | 520      | 11009 | 2600         | 3800     | 0      | 0%        |
-| 3          | 15      | 550      | 12862 | 2300         | 4300     | 1      | 0%        |
-| 3          | 25      | 620      | 12572 | 2800         | 10000    | 865    | 7%        |
+| 1          | 10      | 300      | 11477 | 750          | 1400     | 0      | 0%        |
+| 1          | 10      | 450      | 10575 | 2300         | 3600     | 0      | 0%        |
+| 1          | 10      | 660      | 11434 | 3500         | 4800     | 177    | 2%        |
+| 2          | 10      | 300      | 11135 | 800          | 1500     | 0      | 0%        |
+| 2          | 10      | 450      | 11236 | 1900         | 3400     | 0      | 0%        |
+| 2          | 10      | 660      | 11138 | 3800         | 5500     | 845    | 8%        |
+| 3          | 10      | 300      | 11007 | 860          | 1600     | 0      | 0%        |
+| 3          | 10      | 450      | 11520 | 1700         | 3800     | 0      | 0%        |
+| 3          | 10      | 660      | 11327 | 1900         | 9100     | 1004   | 9%        |
 
-Melhor performance entre os cenários. Tempo mediano 1.3-2.8s com 3 instâncias. Taxa de falha otimizada (0-7%). Recomendado para produção.
+Melhor performance entre os cenários. Tempo mediano 0.75-3.8s com ramp-up 10s e até 660 usuários. Taxa de falha otimizada (0-9%). Imagem 300KB recomendada para produção.
 
 ---
 
@@ -73,17 +73,17 @@ Melhor performance entre os cenários. Tempo mediano 1.3-2.8s com 3 instâncias.
 
 | Instâncias | Ramp up | Usuários | Req/s | Mediana (ms) | 95% (ms) | Falhas | Taxa Falha |
 |------------|---------|----------|-------|--------------|----------|--------|-----------|
-| 1          | 2       | 800      | 7922  | 170          | 1100     | 0      | 0%        |
-| 1          | 10      | 1000     | 12096 | 4200         | 8500     | 0      | 0%        |
-| 1          | 30      | 1250     | 14095 | 4500         | 13000    | 704    | 5%        |
-| 2          | 2       | 1000     | 7952  | 250          | 1100     | 0      | 0%        |
-| 2          | 10      | 1200     | 12558 | 2600         | 10000    | 0      | 0%        |
-| 2          | 30      | 1400     | 37285 | 4500         | 13000    | 745    | 2%        |
-| 3          | 2       | 1200     | 7969  | 230          | 1100     | 0      | 0%        |
-| 3          | 10      | 1560     | 11407 | 2600         | 19000    | 0      | 0%        |
-| 3          | 30      | 1700     | 24405 | 1952         | 29000    | 1952   | 8%        |
+| 1          | 10      | 300      | 11305 | 1300         | 2200     | 0      | 0%        |
+| 1          | 10      | 450      | 13696 | 1900         | 3200     | 0      | 0%        |
+| 1          | 10      | 660      | 15510 | 2800         | 4300     | 1685   | 11%       |
+| 2          | 10      | 300      | 11487 | 1300         | 2000     | 0      | 0%        |
+| 2          | 10      | 450      | 11318 | 2600         | 3700     | 0      | 0%        |
+| 2          | 10      | 660      | 12536 | 3800         | 5200     | 1138   | 9%        |
+| 3          | 10      | 300      | 11258 | 1400         | 2200     | 0      | 0%        |
+| 3          | 10      | 450      | 11052 | 2600         | 4300     | 0      | 0%        |
+| 3          | 10      | 660      | 15428 | 2000         | 5500     | 1096   | 7%        |
 
-Performance estável até 1200-1400 usuários. Taxa de falha controlada (0-8%). Conteúdo híbrido oferece performance intermediária entre cenários puros.
+Performance excelente com escalabilidade linear. Tempo mediano 1.3-3.8s com 10s ramp-up e até 660 usuários. Taxa de falha otimizada (0-11%). Conteúdo híbrido oferece melhor performance que cenários com imagens isoladas.
 
 ## Comparação Geral
 
