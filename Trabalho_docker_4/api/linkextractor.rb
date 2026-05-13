@@ -44,18 +44,21 @@ get '/api/*' do
       links = []
       doc.css('a').each do |link|
         href = link['href']
+        # [FIX] Apenas adicionar se href existir (não nil/vazio)
+        next unless href
         text = link.text.strip.split.join(' ')
         text = '[IMG]' if text.empty?
         
         links << {
           'text' => text,
-          'href' => href || ''
+          'href' => href
         }
       end
       
       # Armazenar em cache
       redis.set(url, JSON.generate(links))
     rescue => e
+      puts "ERROR: #{e.class}: #{e.message}"
       links = []
     end
   end
