@@ -1,16 +1,13 @@
-version: '3'
-
 services:
   api:
-    image: linkextractor-api:ruby-no-cache
+    image: linkextractor-api:ruby-nocache
     build:
       context: ./api
-      dockerfile: Dockerfile.ruby-no-cache
+      dockerfile: Dockerfile.ruby-nocache
     ports:
       - "4567:4567"
-    networks:
-      - test-net
-
+    volumes:
+      - ./logs:/app/logs
   web:
     image: linkextractor-web:php
     build: ./www
@@ -20,15 +17,21 @@ services:
       - API_ENDPOINT=http://api:4567/api/
     depends_on:
       - api
-    networks:
-      - test-net
-
-  redis:
-    image: redis
+  locust:
+    image: locustio/locust:2.43.4
     ports:
-      - "6379:6379"
-    networks:
-      - test-net
-
-networks:
-  test-net:
+      - "8089:8089"
+    volumes:
+      - ./:/mnt/locust:ro
+    working_dir: /mnt/locust
+    depends_on:
+      - api
+    command:
+      - -f
+      - /mnt/locust/loadtest/locustfile_ruby.py
+      - --web-host
+      - "0.0.0.0"
+      - --web-port
+      - "8089"
+      - --host
+      - http://api:4567

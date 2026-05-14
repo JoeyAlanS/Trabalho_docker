@@ -1,33 +1,28 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
+HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+
 def extract_links(url):
-    try:
-        # [FIX] Adicionar timeout obrigatório
-        res = requests.get(url, timeout=10)
-        res.raise_for_status()  # Falha se não for 200
-        
-        soup = BeautifulSoup(res.text, "html.parser")
-        base = url
-        # TODO: Update base if a <base> element is present with the href attribute
-        links = []
-        for link in soup.find_all("a"):
-            href = link.get("href")
-            # [FIX] Apenas adicionar se href existir
-            if href:
-                links.append({
-                    "text": " ".join(link.text.split()) or "[IMG]",
-                    "href": urljoin(base, href)
-                })
-        return links
-    except Exception as e:
-        # [FIX] Log e retorna lista vazia em vez de 500
-        print(f"[EXTRACTOR ERROR] {url}: {type(e).__name__}: {str(e)}", file=sys.stderr)
-        return []
+    res = requests.get(url, timeout=10, headers=HEADERS)
+    res.raise_for_status()
+    soup = BeautifulSoup(res.text, "html.parser")
+    base = url
+    links = []
+    for link in soup.find_all("a"):
+        href = link.get("href")
+        if not href:
+            continue
+        links.append({
+            "text": " ".join(link.text.split()) or "[IMG]",
+            "href": urljoin(base, href),
+        })
+    return links
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:

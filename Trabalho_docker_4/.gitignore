@@ -27,3 +27,10 @@ Thumbs.db
 
 # Docker
 .docker/
+
+# Resultados de carga (manter pasta com .gitkeep)
+results/*.json
+results/*.csv
+
+# Logs da API Ruby (montagem ./logs)
+logs/*.log

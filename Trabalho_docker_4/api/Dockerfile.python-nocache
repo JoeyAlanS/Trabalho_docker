@@ -1,0 +1,11 @@
+FROM python:3.11-slim
+LABEL maintainer="Trabalho Docker - Link Extractor API (Python, sem cache)"
+
+WORKDIR /app
+COPY requirements-nocache.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY linkextractor.py main_no_cache.py /app/
+
+EXPOSE 5000
+CMD ["python", "main_no_cache.py"]

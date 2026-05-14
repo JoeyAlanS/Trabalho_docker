@@ -1,13 +1,13 @@
-FROM python:3
-LABEL maintainer="Joey"
+FROM python:3.11-slim
+LABEL maintainer="Trabalho Docker - Link Extractor API (Python + Redis)"
 
-ENV REDIS_URL="redis://localhost:6379"
+ENV REDIS_URL=redis://redis:6379
 
 WORKDIR /app
 COPY requirements.txt /app/
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY *.py /app/
-RUN chmod a+x *.py
+COPY linkextractor.py main.py /app/
 
-CMD ["./main.py"]
+EXPOSE 5000
+CMD ["python", "main.py"]

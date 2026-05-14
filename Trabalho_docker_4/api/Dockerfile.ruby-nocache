@@ -1,0 +1,14 @@
+FROM ruby:2.6
+LABEL maintainer="Trabalho Docker - Link Extractor API (Ruby, sem Redis)"
+
+ENV LANG=C.UTF-8
+
+WORKDIR /app
+COPY Gemfile.nocache /app/Gemfile
+RUN bundle install
+
+COPY linkextractor_nocache.rb /app/linkextractor.rb
+RUN chmod a+x linkextractor.rb
+
+EXPOSE 4567
+CMD ["./linkextractor.rb", "-o", "0.0.0.0", "-p", "4567"]

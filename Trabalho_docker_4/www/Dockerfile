@@ -1,6 +1,4 @@
 FROM       php:7-apache
-LABEL      maintainer="Joey"
-
-ENV        API_ENDPOINT="http://localhost:5000/api/"
+LABEL      maintainer="Sawood Alam <@ibnesayeed>"
 
 COPY       . /var/www/html/

@@ -1,8 +1,6 @@
-version: '3'
-
 services:
   api:
-    image: linkextractor-api:python
+    image: linkextractor-api:python-cache
     build:
       context: ./api
       dockerfile: Dockerfile.python
@@ -10,11 +8,6 @@ services:
       - "5000:5000"
     environment:
       - REDIS_URL=redis://redis:6379
-    depends_on:
-      - redis
-    networks:
-      - test-net
-
   web:
     image: linkextractor-web:php
     build: ./www
@@ -24,15 +17,23 @@ services:
       - API_ENDPOINT=http://api:5000/api/
     depends_on:
       - api
-    networks:
-      - test-net
-
   redis:
-    image: redis
+    image: redis:7-alpine
+  locust:
+    image: locustio/locust:2.43.4
     ports:
-      - "6379:6379"
-    networks:
-      - test-net
-
-networks:
-  test-net:
+      - "8089:8089"
+    volumes:
+      - ./:/mnt/locust:ro
+    working_dir: /mnt/locust
+    depends_on:
+      - api
+    command:
+      - -f
+      - /mnt/locust/loadtest/locustfile.py
+      - --web-host
+      - "0.0.0.0"
+      - --web-port
+      - "8089"
+      - --host
+      - http://api:5000

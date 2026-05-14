@@ -1,39 +1,41 @@
-version: '3'
-
+# Atalho: mesmo stack que docker-compose.ruby-cache.yml (Ruby + Redis).
+# Para outros cenários use docker-compose.*.yml (ver README).
 services:
   api:
-    image: linkextractor-api:python
-    build:
-      context: ./api
-      dockerfile: Dockerfile
+    image: linkextractor-api:ruby-cache
+    build: ./api
     ports:
-      - "5000:5000"
+      - "4567:4567"
     environment:
       - REDIS_URL=redis://redis:6379
-    depends_on:
-      - redis
-    networks:
-      - linkextractor-net
-
+    volumes:
+      - ./logs:/app/logs
   web:
     image: linkextractor-web:php
     build: ./www
     ports:
       - "80:80"
     environment:
-      - API_ENDPOINT=http://api:5000/api/
+      - API_ENDPOINT=http://api:4567/api/
     depends_on:
       - api
-    networks:
-      - linkextractor-net
-
   redis:
-    image: redis
+    image: redis:7-alpine
+  locust:
+    image: locustio/locust:2.43.4
     ports:
-      - "6379:6379"
-    networks:
-      - linkextractor-net
-
-networks:
-  linkextractor-net:
-    driver: bridge
+      - "8089:8089"
+    volumes:
+      - ./:/mnt/locust:ro
+    working_dir: /mnt/locust
+    depends_on:
+      - api
+    command:
+      - -f
+      - /mnt/locust/loadtest/locustfile.py
+      - --web-host
+      - "0.0.0.0"
+      - --web-port
+      - "8089"
+      - --host
+      - http://api:4567

@@ -6,12 +6,9 @@ require "open-uri"
 require "uri"
 require "nokogiri"
 require "json"
-require "redis"
 require "timeout"
 
-set :protection, :except=>:path_traversal
-
-redis = Redis.new(url: ENV["REDIS_URL"] || "redis://localhost:6379")
+set :protection, :except => :path_traversal
 
 Dir.mkdir("logs") unless Dir.exist?("logs")
 cache_log = File.new("logs/extraction.log", "a")
@@ -21,16 +18,9 @@ get "/" do
 end
 
 get "/api/*" do
-  url = [params['splat'].first, request.query_string].reject(&:empty?).join("?")
-  cache_status = "HIT"
-  jsonlinks = redis.get(url)
-  if jsonlinks.nil?
-    cache_status = "MISS"
-    jsonlinks = JSON.pretty_generate(extract_links(url))
-    redis.set(url, jsonlinks)
-  end
-
-  cache_log.puts "#{Time.now.to_i}\t#{cache_status}\t#{url}"
+  url = [params["splat"].first, request.query_string].reject(&:empty?).join("?")
+  jsonlinks = JSON.pretty_generate(extract_links(url))
+  cache_log.puts "#{Time.now.to_i}\tNOCACHE\t#{url}"
 
   status 200
   headers "content-type" => "application/json"
@@ -49,9 +39,10 @@ def extract_links(url)
       begin
         links.push({
           text: text.empty? ? "[IMG]" : text,
-          href: URI.join(url, link["href"])
+          href: URI.join(url, link["href"]),
         })
-      rescue
+      rescue StandardError
+        # skip malformed href
       end
     end
   end
