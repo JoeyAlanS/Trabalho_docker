@@ -45,7 +45,7 @@ Performance crítica com 1 instância (59s mediano inaceitável). Arquivo de 1MB
 | 2          | 15      | 580      | 10412 | 2400         | 9300     | 5%        |
 | 3          | 15      | 580      | 11392 | 3000         | 5600     | 1%        |
 | 3          | 25      | 610      | 11966 | 2900         | 8100     | 5%        |
-| 3          | 30      | 630      | 124840| 2500         | 8500     | 6%        |
+| 3          | 30      | 630      | 12480| 2500         | 8500     | 6%        |
 
 Performance aceitável. Tempo mediano 2.4-3.0s com 3 instâncias. Taxa de falha controlada (0-6%). Anomalia detectada: Inst.3 com 630 usuários mostra 124.840 req/s (verificar coleta).
 

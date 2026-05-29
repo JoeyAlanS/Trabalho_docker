@@ -41,7 +41,7 @@ cenario2 = {
         {'inst': 2, 'rampup': 15, 'usuarios': 580,  'req_s': 10412, 'mediana': 2400, 'p95': 9300,  'falhas': 488, 'taxa_falha': 0.05},
         {'inst': 3, 'rampup': 15, 'usuarios': 580,  'req_s': 11392, 'mediana': 3000, 'p95': 5600,  'falhas': 60,  'taxa_falha': 0.01},
         {'inst': 3, 'rampup': 25, 'usuarios': 610,  'req_s': 11966, 'mediana': 2900, 'p95': 8100,  'falhas': 552, 'taxa_falha': 0.05},
-        {'inst': 3, 'rampup': 30, 'usuarios': 630,  'req_s': 124840, 'mediana': 2500, 'p95': 8500, 'falhas': 795, 'taxa_falha': 0.06},
+        {'inst': 3, 'rampup': 30, 'usuarios': 630,  'req_s': 12480, 'mediana': 2500, 'p95': 8500, 'falhas': 795, 'taxa_falha': 0.06},
     ]
 }
 
